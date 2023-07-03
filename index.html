@@ -10,6 +10,8 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -18,10 +20,10 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="overview">
-            <h1>Las Vegas</h1>
+            <h1 id="city">Phoenix</h1>
             <ul>
               <li>Sunday 15:15</li>
-              <li>Sunny</li>
+              <li id="description">Sunny</li>
             </ul>
             <div class="row">
               <div class="col-sm-6">
@@ -29,15 +31,15 @@
                   <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
                   alt="Sunny" id="icon"
                 </div>
-                <strong>112</strong>
+                <strong id="temperature">112</strong>
                 <span class="units">°F | <a href="#">°C</a></span>
               </div>
             </div>
             <div class="col-sm-6">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Humidity: 6%</li>
-                <li>Wind: 6 mph</li>
+                <li>Precipitation: <span id="precipitation"></span></li>
+                <li>Humidity: <span id="humidity"></span></li>
+                <li>Wind: <span id="wind"></span></li>
               </ul>
             </div>
           </div>
