@@ -23,7 +23,6 @@ li {
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
-  text-transform: capitalize;
 }
 
 .weather-app-wrapper {
@@ -56,4 +55,8 @@ li {
 .weather-temperature .units {
   position: relative;
   font-size: 16px;
+}
+
+.description {
+  text-transform: capitalize;
 }
