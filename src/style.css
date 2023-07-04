@@ -1,9 +1,15 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(
+    90deg,
+    rgb(248, 217, 226) 0%,
+    rgb(139, 102, 241) 100%,
+    rgb(139, 102, 241) 100%
+  );
 }
 
 h1 {
-  color: #878787;
+  color: black;
   font-size: 24px;
   font-weight: 100;
   line-height: 28px;
@@ -37,6 +43,7 @@ li::first-letter {
   padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 10px;
+  background: whitesmoke;
 }
 
 .overview {
