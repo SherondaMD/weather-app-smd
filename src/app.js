@@ -1,4 +1,4 @@
-//formatting date
+//formatting date and time
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -9,6 +9,7 @@ function formatDate(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+
   let days = [
     "Sunday",
     "Monday",
@@ -36,11 +37,13 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
   let date = document.querySelector("#date");
   date.innerHTML = formatDate(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+  icon.setAttribute("alt", `${response.data.condition.description}`);
 }
 
 let apiKey = "b8b61a4d34f03tcbf3192f94o59a0ba4";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Las Vegas&key=${apiKey}&units=imperial`;
+let city = "Phoenix";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
 
 axios.get(apiUrl).then(displayTemperature);
-
-//formatting Time
