@@ -45,6 +45,7 @@ function displayTemperature(response) {
 }
 
 //formatting city search
+
 function search(city) {
   let apiKey = "b8b61a4d34f03tcbf3192f94o59a0ba4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
@@ -56,6 +57,8 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
+
+//formatt degrees C to F part 1
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
@@ -81,7 +84,7 @@ let fahrenheitTemperature = null;
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-//formatt degrees C to F
+//formatt degrees C to F part 2
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
