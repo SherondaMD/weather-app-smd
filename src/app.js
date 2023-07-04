@@ -1,4 +1,3 @@
-//formatting date and time
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -66,8 +65,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-//formatting temperature and weather
-
 function getForecast(coordinates) {
   let apiKey = "b8b61a4d34f03tcbf3192f94o59a0ba4";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
@@ -97,8 +94,6 @@ function displayTemperature(response) {
   getForecast(response.data.coordinates);
 }
 
-//formatting city search
-
 function search(city) {
   let apiKey = "b8b61a4d34f03tcbf3192f94o59a0ba4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
@@ -111,38 +106,7 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-//formatt degrees C to F part 1
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-let fahrenheitTemperature = null;
-
-//format form
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-//formatt degrees C to F part 2
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 search("Las Vegas");
