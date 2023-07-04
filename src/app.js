@@ -40,6 +40,8 @@ function displayTemperature(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
   icon.setAttribute("alt", `${response.data.condition.description}`);
+
+  fahrenheitTemperature = response.data.temperature.current;
 }
 
 //formatting city search
@@ -55,8 +57,36 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("Las Vegas");
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitTemperature = null;
+
 //format form
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+//formatt degrees C to F
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+search("Las Vegas");
