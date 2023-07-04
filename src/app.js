@@ -23,7 +23,8 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
@@ -53,6 +54,14 @@ function displayForecast() {
 }
 
 //formatting temperature and weather
+
+function getForecast(coordinates) {
+  let apiKey = "b8b61a4d34f03tcbf3192f94o59a0ba4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
+  //console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
@@ -71,6 +80,8 @@ function displayTemperature(response) {
   icon.setAttribute("alt", `${response.data.condition.description}`);
 
   fahrenheitTemperature = response.data.temperature.current;
+
+  getForecast(response.data.coordinates);
 }
 
 //formatting city search
@@ -122,4 +133,3 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 search("Las Vegas");
-displayForecast();
